@@ -28,4 +28,3 @@ Token price should be pegged to the value of its Assets Under Management (AUM).
  
 ## Outputs
  - Meteor App showing TTK live price
-
