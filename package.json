@@ -1,5 +1,5 @@
 {
-  "name": "fluontest",
+  "name": "tokenpool",
   "private": true,
   "scripts": {
     "start": "meteor run"
