@@ -1,0 +1,106 @@
+<head>
+  <title>fluontest</title>
+</head>
+
+<body>
+  <div class="col-md-8 col-md-offset-2" id="content">
+    <div class="row">
+      {{> header}}
+    </div>
+    <hr>
+    <div class="row">
+      {{> detail}}
+    </div>
+    
+  </div>
+</body>
+
+
+<template name="header">
+  <div id="header" style="text-align: center">    
+    <div style="display: inline-block;"><h1>Pruebas Fluon</h1></div>
+  </div>
+    
+</template>
+
+<template name="detail">
+  {{ #if coinsReady }}
+    {{ #if tokenUSDPrice}}
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>TKK</th>
+                <th>USD Price</th>
+                <th>BTC Price</th>
+                <th>Supply</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr class="clickable" id="ttkRow"> 
+                  <td>1</td>
+                  <td>{{ tokenUSDPrice }}</td>
+                  <td>{{ tokenBTCPrice }}</td>
+                  <td>{{ tkkSupply }}</td>
+                </tr>
+                <tr style="display: none" class="hid ttkRow">
+                  <td colspan="4">
+                    <div id="ttkChart"></div>
+                  </td>    
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    {{ /if }}
+    
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Currency</th>
+              <th>Name</th>
+              <th>USD Price</th>
+              <th>Last Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ #each coin in allCoins}}
+              <tr class="clickable coinRow" id="{{ @index }}">
+                <th scope="row">{{ @index }}</th>
+                <td>{{ coin.name }}</td>
+                <td>{{ coin.fullname }}</td>
+                <td>{{ round coin.usdPrice }}</td>
+                <td>{{ longDate coin.date }}</td>
+              </tr>
+              <tr style="display: none" class="hid {{ @index }}">
+                <td colspan="5">
+                  <div id="chart{{@index}}"></div>
+
+                </td>    
+              </tr>
+            {{ /each }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {{ else }}
+    {{ > splash }}
+  {{ /if }}
+  
+</template>
+
+<template name="splash">
+
+  <!-- Simple splash screen-->
+  <div style="text-align: center">
+    <img style="display: inline-block;" src="/loading-bars.svg" width="64" height="64"/>
+  </div>
+  
+
+</template>

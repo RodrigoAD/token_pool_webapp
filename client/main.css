@@ -1,0 +1,6 @@
+/* CSS declarations go here */
+.c3-axis .tick line {display: none;}
+
+.clickable {
+    cursor: pointer;
+}
